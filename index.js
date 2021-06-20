@@ -2,6 +2,7 @@ const { ApolloServer, gql } = require("apollo-server");
 const { resolve } = require("path");
 const { readFileSync } = require("fs");
 const { resolvers } = require("./graphql/resolvers");
+require("./mongodb/connect");
 
 const typeDefs = gql(
   readFileSync(resolve("./graphql/schema.graphql"), {

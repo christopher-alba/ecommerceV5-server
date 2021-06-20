@@ -18,7 +18,9 @@
   "homepage": "https://github.com/christopher-alba/apollo-server-node#readme",
   "dependencies": {
     "apollo-server": "^2.25.1",
-    "graphql": "^15.5.0"
+    "graphql": "^15.5.0",
+    "mongodb": "^3.6.9",
+    "mongoose": "^5.12.14"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
