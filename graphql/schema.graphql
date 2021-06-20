@@ -2,6 +2,7 @@ type Query {
   product(id: ID!): Product!
   products: [Product!]!
   me: User
+  cart(username: String!): Cart
 }
 type Mutation {
   createProduct(product: createProductInput!): Product!
@@ -13,25 +14,44 @@ type Mutation {
     permission: PermissionType!
   ): User
   login(username: String!, password: String!): User
+  createCart(username: String!): Cart
+  updateCart(products: [updateCartInput]!, username: String!): Cart
+}
+type Cart {
+  products: [CartProduct]!
+  userId: String!
+}
+type CartProduct {
+  id: ID!
+  name: String!
+  price: Float!
+  description: String!
+  images: [ProductImagesOutput!]!
+  orientation: Orientation!
+  clothingType: ClothingType!
+  size: ClothingSizes!
 }
 type Product {
   id: ID!
   name: String!
   price: Float!
   description: String!
-  images: [String!]!
+  images: [ProductImagesOutput!]!
   views: Int!
   orientation: Orientation!
   clothingType: ClothingType!
   sizes: ClothingSizes!
 }
 type User {
+  id: ID!
   username: String!
   password: String!
   token: String
   permission: PermissionType
 }
-
+type ProductImagesOutput {
+  url: String!
+}
 input createProductInput {
   name: String!
   price: Float!
@@ -52,9 +72,21 @@ input updateProductInput {
   orientation: Orientation!
   clothingType: ClothingType!
 }
+
+input updateCartInput {
+  name: String
+  price: Float
+  description: String
+  image: String
+  orientation: Orientation
+  clothingType: ClothingType
+  size: ClothingSizes
+}
+
 input ProductImages {
   url: String!
 }
+
 input ProductSizes {
   stock: Int!
   size: ClothingSizes!

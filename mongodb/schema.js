@@ -33,7 +33,7 @@ const cartSchema = new mongoose.Schema({
       name: String,
       price: Number,
       description: String,
-      images: [{ url: String, id: String }],
+      images: [{ url: String }],
       orientation: String,
       clothingType: String,
       size: String,

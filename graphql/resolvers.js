@@ -1,3 +1,4 @@
+const { register } = require("../mongodb/db/auth");
 const {
   createProduct,
   updateProduct,
@@ -10,13 +11,16 @@ exports.resolvers = {
   Query: {
     product: (parent, args, context, info) => getProduct(args.id),
     products: () => getProducts(),
-    me: (args, context) => {
+    me: (parent, args, context, info) => {
       // //console.log(context.user)
       if (context().loggedIn) {
         return context().user;
       } else {
         throw new AuthenticationError("Please Login Again!");
       }
+    },
+    cart: (parent, { username }, context, info) => {
+      return getCart(username);
     },
   },
   Mutation: {
@@ -28,6 +32,12 @@ exports.resolvers = {
     },
     deleteProduct: (parent, args, context, info) => {
       return deleteProduct(args.id);
+    },
+    createCart: (parent, { username }, context, info) => {
+      return createCart(username);
+    },
+    updateCart: (parent, args, context, info) => {
+      return updateCart(args);
     },
     register: (parent, args, context, info) => {
       return register(args).then((res) => {
