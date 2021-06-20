@@ -6,7 +6,11 @@ const {
   getProduct,
   getProducts,
 } = require("../mongodb/db/product");
-
+const {
+  getProfile,
+  updateProfile,
+  createProfile,
+} = require("../mongodb/db/profile");
 exports.resolvers = {
   Query: {
     product: (parent, args, context, info) => getProduct(args.id),
@@ -21,6 +25,9 @@ exports.resolvers = {
     },
     cart: (parent, { username }, context, info) => {
       return getCart(username);
+    },
+    profile: (parent, args, context, info) => {
+      return getProfile(args.id);
     },
   },
   Mutation: {
@@ -38,6 +45,12 @@ exports.resolvers = {
     },
     updateCart: (parent, args, context, info) => {
       return updateCart(args);
+    },
+    createProfile: (parent, args, context, info) => {
+      return createProfile({ userId: args.id });
+    },
+    updateProfile: (parent, args, context, info) => {
+      return updateProfile(args.profile);
     },
     register: (parent, args, context, info) => {
       return register(args).then((res) => {

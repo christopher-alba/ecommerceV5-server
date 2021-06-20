@@ -3,6 +3,7 @@ type Query {
   products: [Product!]!
   me: User
   cart(username: String!): Cart
+  profile(id: ID!): Profile!
 }
 type Mutation {
   createProduct(product: createProductInput!): Product!
@@ -16,10 +17,23 @@ type Mutation {
   login(username: String!, password: String!): User
   createCart(username: String!): Cart
   updateCart(products: [updateCartInput]!, username: String!): Cart
+  createProfile(profile: createProfileInput!): Profile
+  updateProfile(profile: updateProfileInput!): Profile
 }
+type Profile {
+  userId: String!
+  firstName: String
+  lastName: String
+  favouriteProducts: [favouriteProduct]
+  profilePicture: String
+}
+
 type Cart {
   products: [CartProduct]!
   userId: ID!
+}
+type favouriteProduct {
+  productId: ID!
 }
 type CartProduct {
   id: ID!
@@ -73,6 +87,18 @@ input updateProductInput {
   clothingType: ClothingType!
 }
 
+input createProfileInput {
+  userId: ID!
+}
+input updateProfileInput {
+  firstName: String
+  lastName: String
+  favouriteProducts: [favouriteProductInput]
+  profilePicture: String
+}
+input favouriteProductInput{
+   productId: ID!
+}
 input updateCartInput {
   name: String
   price: Float

@@ -1,6 +1,6 @@
 const { Profile } = require("../models");
 
-createProfile = async (profile) => {
+const createProfile = async (profile) => {
   const newProfile = new Profile({ ...profile });
   const { id } = await newProfile.save();
 
@@ -10,16 +10,22 @@ createProfile = async (profile) => {
   };
 };
 
-updateProfile = async (profile) => {
+const updateProfile = async (profile) => {
   const res = await Profile.updateOne({ _id: profile.id }, { ...profile });
   return { ...profile };
 };
 
-getProfile = async (id) => {
+const getProfile = async (id) => {
   const profile = await Profile.findById(id);
   if (profile) {
     return profile;
   } else {
     return "getProfile: Profile not found";
   }
+};
+
+module.exports = {
+  createProfile,
+  updateProfile,
+  getProfile,
 };
