@@ -27,7 +27,7 @@ exports.resolvers = {
       return getCart(username);
     },
     profile: (parent, args, context, info) => {
-      return getProfile(args.id);
+      return getProfile(args.userId);
     },
   },
   Mutation: {

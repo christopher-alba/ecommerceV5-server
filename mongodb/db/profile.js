@@ -12,13 +12,16 @@ const createProfile = async (profile) => {
 };
 
 const updateProfile = async (profile) => {
-  const res = await Profile.updateOne({ _id: profile.id }, { ...profile });
+  const res = await Profile.updateOne(
+    { userId: profile.userId },
+    { ...profile }
+  );
   console.log(profile);
   return { ...profile };
 };
 
-const getProfile = async (id) => {
-  const profile = await Profile.findById(id);
+const getProfile = async (userId) => {
+  const profile = await Profile.findOne({ userId: userId });
   if (profile) {
     return profile;
   } else {

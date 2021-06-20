@@ -3,7 +3,7 @@ type Query {
   products: [Product!]!
   me: User
   cart(username: String!): Cart
-  profile(id: ID!): Profile!
+  profile(userId: ID!): Profile!
 }
 type Mutation {
   createProduct(product: createProductInput!): Product!
