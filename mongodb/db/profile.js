@@ -1,6 +1,7 @@
 const { Profile } = require("../models");
 
 const createProfile = async (profile) => {
+  console.log(profile);
   const newProfile = new Profile({ ...profile });
   const { id } = await newProfile.save();
 
@@ -12,6 +13,7 @@ const createProfile = async (profile) => {
 
 const updateProfile = async (profile) => {
   const res = await Profile.updateOne({ _id: profile.id }, { ...profile });
+  console.log(profile);
   return { ...profile };
 };
 

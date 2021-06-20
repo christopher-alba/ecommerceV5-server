@@ -91,6 +91,7 @@ input createProfileInput {
   userId: ID!
 }
 input updateProfileInput {
+  userId: ID!
   firstName: String
   lastName: String
   favouriteProducts: [favouriteProductInput]
