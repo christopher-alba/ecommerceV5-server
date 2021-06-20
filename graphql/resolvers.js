@@ -8,18 +8,18 @@ const {
 
 exports.resolvers = {
   Query: {
-    product: ({ id }) => getProduct(id),
+    product: (parent, args, context, info) => getProduct(args.id),
     products: () => getProducts(),
   },
   Mutation: {
-    createProduct: ({ product }) => {
-      return createProduct(product);
+    createProduct: (parent, args, context, info) => {
+      return createProduct(args.product);
     },
-    updateProduct: ({ product }) => {
-      return updateProduct(product);
+    updateProduct: (parent, args, context, info) => {
+      return updateProduct(args.product);
     },
-    deleteProduct: ({ id }) => {
-      return deleteProduct(id);
+    deleteProduct: (parent, args, context, info) => {
+      return deleteProduct(args.id);
     },
   },
 };

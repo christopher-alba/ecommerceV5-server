@@ -12,8 +12,8 @@ input createProductInput {
   name: String!
   price: Float!
   description: String!
-  images: [String!]!
-  sizes: [ClothingSizes!]!
+  images: [ProductImages!]!
+  sizes: [ProductSizes!]!
   orientation: Orientation!
   clothingType: ClothingType!
 }
@@ -23,12 +23,18 @@ input updateProductInput {
   name: String!
   price: Float!
   description: String!
-  images: [String!]!
-  sizes: [ClothingSizes!]!
+  images: [ProductImages!]!
+  sizes: [ProductSizes!]!
   orientation: Orientation!
   clothingType: ClothingType!
 }
-
+input ProductImages {
+  url: String!
+}
+input ProductSizes {
+  stock: Int!
+  size: ClothingSizes!
+}
 type Product {
   id: ID!
   name: String!
