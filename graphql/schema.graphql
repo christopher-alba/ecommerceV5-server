@@ -19,7 +19,7 @@ type Mutation {
 }
 type Cart {
   products: [CartProduct]!
-  userId: String!
+  userId: ID!
 }
 type CartProduct {
   id: ID!

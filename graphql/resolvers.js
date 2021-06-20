@@ -1,4 +1,4 @@
-const { register } = require("../mongodb/db/auth");
+const { register, login } = require("../mongodb/db/auth");
 const {
   createProduct,
   updateProduct,
