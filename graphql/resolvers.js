@@ -10,6 +10,14 @@ exports.resolvers = {
   Query: {
     product: (parent, args, context, info) => getProduct(args.id),
     products: () => getProducts(),
+    me: (args, context) => {
+      // //console.log(context.user)
+      if (context().loggedIn) {
+        return context().user;
+      } else {
+        throw new AuthenticationError("Please Login Again!");
+      }
+    },
   },
   Mutation: {
     createProduct: (parent, args, context, info) => {
@@ -20,6 +28,24 @@ exports.resolvers = {
     },
     deleteProduct: (parent, args, context, info) => {
       return deleteProduct(args.id);
+    },
+    register: (parent, args, context, info) => {
+      return register(args).then((res) => {
+        const token = res.token;
+        return {
+          token,
+          ...res._doc,
+        };
+      });
+    },
+    login: (parent, args, context, info) => {
+      return login(args).then((res) => {
+        const token = res.token;
+        return {
+          token,
+          ...res._doc,
+        };
+      });
     },
   },
 };

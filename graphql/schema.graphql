@@ -1,11 +1,35 @@
 type Query {
   product(id: ID!): Product!
   products: [Product!]!
+  me: User
 }
 type Mutation {
   createProduct(product: createProductInput!): Product!
   updateProduct(product: updateProductInput!): Product!
   deleteProduct(id: ID!): ID!
+  register(
+    username: String!
+    password: String!
+    permission: PermissionType!
+  ): User
+  login(username: String!, password: String!): User
+}
+type Product {
+  id: ID!
+  name: String!
+  price: Float!
+  description: String!
+  images: [String!]!
+  views: Int!
+  orientation: Orientation!
+  clothingType: ClothingType!
+  sizes: ClothingSizes!
+}
+type User {
+  username: String!
+  password: String!
+  token: String
+  permission: PermissionType
 }
 
 input createProductInput {
@@ -35,16 +59,10 @@ input ProductSizes {
   stock: Int!
   size: ClothingSizes!
 }
-type Product {
-  id: ID!
-  name: String!
-  price: Float!
-  description: String!
-  images: [String!]!
-  views: Int!
-  orientation: Orientation!
-  clothingType: ClothingType!
-  sizes: ClothingSizes!
+
+enum PermissionType {
+  ADMIN
+  BASIC
 }
 
 enum Orientation {
