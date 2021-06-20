@@ -1,16 +1,25 @@
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
+const {
+  createProduct,
+  updateProduct,
+  deleteProduct,
+  getProduct,
+  getProducts,
+} = require("../mongodb/db/product");
 
 exports.resolvers = {
   Query: {
-    books: () => books,
+    product: ({ id }) => getProduct(id),
+    products: () => getProducts(),
+  },
+  Mutation: {
+    createProduct: ({ product }) => {
+      return createProduct(product);
+    },
+    updateProduct: ({ product }) => {
+      return updateProduct(product);
+    },
+    deleteProduct: ({ id }) => {
+      return deleteProduct(id);
+    },
   },
 };

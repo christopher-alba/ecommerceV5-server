@@ -1,8 +1,71 @@
-type Book {
-  title: String
-  author: String
+type Query {
+  product(id: ID!): Product!
+  products: [Product!]!
+}
+type Mutation {
+  createProduct(product: createProductInput!): Product!
+  updateProduct(product: updateProductInput!): Product!
+  deleteProduct(id: ID!): ID!
 }
 
-type Query {
-  books: [Book]
+input createProductInput {
+  name: String!
+  price: Float!
+  description: String!
+  images: [String!]!
+  sizes: [ClothingSizes!]!
+  orientation: Orientation!
+  clothingType: ClothingType!
+}
+
+input updateProductInput {
+  id: ID!
+  name: String!
+  price: Float!
+  description: String!
+  images: [String!]!
+  sizes: [ClothingSizes!]!
+  orientation: Orientation!
+  clothingType: ClothingType!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  price: Float!
+  description: String!
+  images: [String!]!
+  views: Int!
+  orientation: Orientation!
+  clothingType: ClothingType!
+  sizes: ClothingSizes!
+}
+
+enum Orientation {
+  NONE
+  MASCULINE
+  FEMININE
+  UNISEX
+}
+
+enum ClothingType {
+  NONE
+  SHORTS
+  PANTS
+  TSHIRT
+  JACKET
+  UNDERWEAR
+}
+
+enum ClothingSizes {
+  XS
+  S
+  M
+  L
+  XL
+  XXL
+  XL3
+  XL4
+  XL5
+  XL6
 }
