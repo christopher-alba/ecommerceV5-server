@@ -125,19 +125,16 @@ enum PermissionType {
 }
 
 enum Orientation {
-  NONE
   MASCULINE
   FEMININE
   UNISEX
 }
 
 enum ClothingType {
-  NONE
   SHORTS
   PANTS
   TSHIRT
   JACKET
-  UNDERWEAR
 }
 
 enum ClothingSizes {
