@@ -1,16 +1,21 @@
-const { register, login } = require("../mongodb/db/auth");
+const { register, login } = require('../mongodb/db/auth')
 const {
   createProduct,
   updateProduct,
   deleteProduct,
   getProduct,
-  getProducts,
-} = require("../mongodb/db/product");
+  getProducts
+} = require('../mongodb/db/product')
 const {
   getProfile,
   updateProfile,
-  createProfile,
-} = require("../mongodb/db/profile");
+  createProfile
+} = require('../mongodb/db/profile')
+const {
+  createCart,
+  updateCart,
+  getCart,
+} = require('../mongodb/db/cart')
 exports.resolvers = {
   Query: {
     product: (parent, args, context, info) => getProduct(args.id),
@@ -18,57 +23,57 @@ exports.resolvers = {
     me: (parent, args, context, info) => {
       // //console.log(context.user)
       if (context().loggedIn) {
-        return context().user;
+        return context().user
       } else {
-        throw new AuthenticationError("Please Login Again!");
+        throw new AuthenticationError('Please Login Again!')
       }
     },
-    cart: (parent, { username }, context, info) => {
-      return getCart(username);
+    cart: (parent, { userId }, context, info) => {
+      return getCart(userId)
     },
     profile: (parent, args, context, info) => {
-      return getProfile(args.userId);
-    },
+      return getProfile(args.userId)
+    }
   },
   Mutation: {
     createProduct: (parent, args, context, info) => {
-      return createProduct(args.product);
+      return createProduct(args.product)
     },
     updateProduct: (parent, args, context, info) => {
-      return updateProduct(args.product);
+      return updateProduct(args.product)
     },
     deleteProduct: (parent, args, context, info) => {
-      return deleteProduct(args.id);
+      return deleteProduct(args.id)
     },
     createCart: (parent, { username }, context, info) => {
-      return createCart(username);
+      return createCart(username)
     },
     updateCart: (parent, args, context, info) => {
-      return updateCart(args);
+      return updateCart(args)
     },
     createProfile: (parent, args, context, info) => {
-      return createProfile({ userId: args.id });
+      return createProfile({ userId: args.id })
     },
     updateProfile: (parent, args, context, info) => {
-      return updateProfile(args.profile);
+      return updateProfile(args.profile)
     },
     register: (parent, args, context, info) => {
       return register(args).then((res) => {
-        const token = res.token;
+        const token = res.token
         return {
           token,
-          ...res._doc,
-        };
-      });
+          ...res._doc
+        }
+      })
     },
     login: (parent, args, context, info) => {
       return login(args).then((res) => {
-        const token = res.token;
+        const token = res.token
         return {
           token,
-          ...res._doc,
-        };
-      });
-    },
-  },
-};
+          ...res._doc
+        }
+      })
+    }
+  }
+}
