@@ -134,8 +134,8 @@ enum Orientation {
 enum ClothingType {
   SHORTS
   PANTS
-  TSHIRT
-  JACKET
+  TSHIRTS
+  JACKETS
 }
 
 enum ClothingSizes {

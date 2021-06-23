@@ -2,7 +2,9 @@ const { db } = require("./connect");
 
 const productsDB = db.collection("products");
 
-productsDB.drop();
+productsDB.deleteMany({}, () => {
+  console.log("Seeds have been cleared");
+});
 
 let products = [];
 let counter = 0;
