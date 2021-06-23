@@ -33,10 +33,19 @@ const getProducts = async () => {
   const items = await Product.find();
   return items;
 };
+
+const getTopPicks = async (maxCount) => {
+  const items = await Product.find();
+  const sortedItems = items.sort((a, b) => b.views - a.views);
+  const splicedItems = sortedItems.splice(0, maxCount);
+  return splicedItems;
+};
+
 module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
   getProduct,
   getProducts,
+  getTopPicks,
 };

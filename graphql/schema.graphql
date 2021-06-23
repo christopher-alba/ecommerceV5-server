@@ -1,9 +1,10 @@
 type Query {
-  product(id: ID!): Product!
-  products: [Product!]!
+  product(id: ID!): Product
+  products: [Product]
   me: User
   cart(userId: ID!): Cart
   profile(userId: ID!): Profile!
+  topPicks(maxCount: Int!): [Product]
 }
 type Mutation {
   createProduct(product: createProductInput!): Product!
@@ -97,8 +98,8 @@ input updateProfileInput {
   favouriteProducts: [favouriteProductInput]
   profilePicture: String
 }
-input favouriteProductInput{
-   productId: ID!
+input favouriteProductInput {
+  productId: ID!
 }
 input updateCartInput {
   name: String
