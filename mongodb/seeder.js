@@ -35,6 +35,12 @@ for (let i = 0; i < 100; i++) {
       {
         url: `https://picsum.photos/1920/1080?random=${counter}`,
       },
+      {
+        url: `https://picsum.photos/1920/1080?random=${counter}`,
+      },
+      {
+        url: `https://picsum.photos/1920/1080?random=${counter}`,
+      },
     ],
     sizes: [
       {
