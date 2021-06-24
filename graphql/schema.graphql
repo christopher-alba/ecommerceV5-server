@@ -55,7 +55,7 @@ type Product {
   views: Int!
   orientation: Orientation!
   clothingType: ClothingType!
-  sizes: ClothingSizes!
+  sizes: [ProductSizes!]!
 }
 type User {
   id: ID!
@@ -63,6 +63,10 @@ type User {
   password: String!
   token: String
   permission: PermissionType
+}
+type ProductSizes {
+  stock: Int!
+  size: ClothingSizes!
 }
 type ProductImagesOutput {
   url: String!
@@ -72,7 +76,7 @@ input createProductInput {
   price: Float!
   description: String!
   images: [ProductImages!]!
-  sizes: [ProductSizes!]!
+  sizes: [ProductSizesInput!]!
   orientation: Orientation!
   clothingType: ClothingType!
 }
@@ -83,7 +87,7 @@ input updateProductInput {
   price: Float!
   description: String!
   images: [ProductImages!]!
-  sizes: [ProductSizes!]!
+  sizes: [ProductSizesInput!]!
   orientation: Orientation!
   clothingType: ClothingType!
 }
@@ -115,7 +119,7 @@ input ProductImages {
   url: String!
 }
 
-input ProductSizes {
+input ProductSizesInput {
   stock: Int!
   size: ClothingSizes!
 }
