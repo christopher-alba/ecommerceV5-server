@@ -5,6 +5,9 @@ const { createCart } = require("./cart");
 const { createProfile } = require("./profile");
 
 const register = async (args) => {
+  if (args.username === "" || args.password === "") {
+    throw new AuthenticationError("Invalid Username or Password");
+  }
   const newUser = {
     username: args.username,
     password: await encryptPassword(args.password),
@@ -28,6 +31,9 @@ const register = async (args) => {
 };
 const login = async (args) => {
   const user = await User.findOne({ username: args.username });
+  if (!user) {
+    throw new AuthenticationError("User does not exist");
+  }
   const isMatch = await comparePassword(args.password, user.password);
   if (isMatch) {
     const token = getToken(user);
