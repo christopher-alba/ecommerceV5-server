@@ -20,7 +20,7 @@ exports.resolvers = {
     product: (parent, args, context, info) => getProduct(args.id),
     products: () => getProducts(),
     me: (parent, args, context, info) => {
-      // //console.log(context.user)
+      console.log(context.user)
       if (context.loggedIn) {
         return context.user;
       } else {

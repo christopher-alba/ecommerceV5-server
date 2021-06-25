@@ -58,7 +58,7 @@ type Product {
   sizes: [ProductSizes!]!
 }
 type User {
-  id: ID!
+  _id: ID!
   username: String!
   password: String!
   token: String
