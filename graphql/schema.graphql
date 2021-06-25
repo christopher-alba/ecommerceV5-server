@@ -38,6 +38,7 @@ type favouriteProduct {
 }
 type CartProduct {
   id: ID!
+  productId: ID!
   name: String!
   price: Float!
   description: String!
@@ -106,6 +107,7 @@ input favouriteProductInput {
   productId: ID!
 }
 input updateCartInput {
+  productId: ID
   name: String
   price: Float
   description: String
