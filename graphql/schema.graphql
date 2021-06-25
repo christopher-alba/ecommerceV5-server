@@ -111,7 +111,7 @@ input updateCartInput {
   name: String
   price: Float
   description: String
-  image: String
+  images: [ProductImages!]!
   orientation: Orientation
   clothingType: ClothingType
   size: ClothingSizes
