@@ -26,8 +26,8 @@ function makeSize() {
 }
 
 for (let i = 0; i < 100; i++) {
+  counter++;
   products.push({
-    id: counter++,
     name: "Product" + counter,
     price: (Math.random() * 100).toFixed(2),
     description:

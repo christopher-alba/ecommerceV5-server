@@ -49,14 +49,14 @@ type CartProduct {
 }
 type Product {
   id: ID!
-  name: String!
-  price: Float!
-  description: String!
-  images: [ProductImagesOutput!]!
-  views: Int!
-  orientation: Orientation!
-  clothingType: ClothingType!
-  sizes: [ProductSizes!]!
+  name: String
+  price: Float
+  description: String
+  images: [ProductImagesOutput]
+  views: Int
+  orientation: Orientation
+  clothingType: ClothingType
+  sizes: [ProductSizes]
 }
 type User {
   _id: ID!
@@ -84,13 +84,14 @@ input createProductInput {
 
 input updateProductInput {
   id: ID!
-  name: String!
-  price: Float!
-  description: String!
-  images: [ProductImages!]!
-  sizes: [ProductSizesInput!]!
-  orientation: Orientation!
-  clothingType: ClothingType!
+  name: String
+  price: Float
+  description: String
+  images: [ProductImages]
+  sizes: [ProductSizesInput]
+  orientation: Orientation
+  clothingType: ClothingType
+  views: Int
 }
 
 input createProfileInput {

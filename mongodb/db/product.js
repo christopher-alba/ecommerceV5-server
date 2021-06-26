@@ -1,7 +1,7 @@
 const { Product } = require("../models");
 
 const createProduct = async (product) => {
-  const newProduct = new Product({ ...product });
+  const newProduct = new Product({ ...product, views: 0 });
   const { id } = await newProduct.save();
 
   return {
@@ -30,7 +30,7 @@ const getProduct = async (id) => {
 };
 
 const getProducts = async () => {
-  const items = await Product.find();
+  const items = await Product.find().sort([["views", "ascending"]]);
   return items;
 };
 
