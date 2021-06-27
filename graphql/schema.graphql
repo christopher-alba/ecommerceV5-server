@@ -5,6 +5,7 @@ type Query {
   cart(userId: ID!): Cart
   profile(userId: ID!): Profile!
   topPicks(maxCount: Int!): [Product]
+  specificProducts(ids: [ID!]!): [Product]
 }
 type Mutation {
   createProduct(product: createProductInput!): Product!

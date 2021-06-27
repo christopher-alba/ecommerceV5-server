@@ -34,6 +34,11 @@ const getProducts = async () => {
   return items;
 };
 
+const getSpecificProducts = async (ids) => {
+  const specifics = await Product.find({ _id: { $in: ids } });
+  return specifics;
+};
+
 const getTopPicks = async (maxCount) => {
   const items = await Product.find();
   const sortedItems = items.sort((a, b) => b.views - a.views);
@@ -48,4 +53,5 @@ module.exports = {
   getProduct,
   getProducts,
   getTopPicks,
+  getSpecificProducts,
 };

@@ -6,6 +6,7 @@ const {
   getProduct,
   getProducts,
   getTopPicks,
+  getSpecificProducts,
 } = require("../mongodb/db/product");
 const {
   getProfile,
@@ -34,6 +35,9 @@ exports.resolvers = {
     },
     topPicks: (parent, args, context, info) => {
       return getTopPicks(args.maxCount);
+    },
+    specificProducts: (parent, args, context, info) => {
+      return getSpecificProducts(args.ids);
     },
   },
   Mutation: {
