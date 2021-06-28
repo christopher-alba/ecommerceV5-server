@@ -27,7 +27,6 @@ const deleteProduct = async (id) => {
     const filteredFavourites = profile.favouriteProducts.filter((productObj) => {
       return productObj.productId !== id;
     })
-    console.log(filteredFavourites);
     await Profile.updateOne({ userId: userId }, { favouriteProducts: filteredFavourites });
   })
 
