@@ -1,4 +1,4 @@
-const { Product } = require("../models");
+const { Product, Profile } = require("../models");
 
 const createProduct = async (product) => {
   const newProduct = new Product({ ...product, views: 0 });
@@ -17,6 +17,20 @@ const updateProduct = async (product) => {
 
 const deleteProduct = async (id) => {
   const res = await Product.deleteOne({ _id: id });
+
+  // find all profiles
+  const profiles = await Profile.find()
+
+  // for each profile, update it, deleting the product id from the favourite products list.
+  profiles.forEach(async profile => {
+    const userId = profile.userId;
+    const filteredFavourites = profile.favouriteProducts.filter((productObj) => {
+      return productObj.productId !== id;
+    })
+    console.log(filteredFavourites);
+    await Profile.updateOne({ userId: userId }, { favouriteProducts: filteredFavourites });
+  })
+
   return id;
 };
 
