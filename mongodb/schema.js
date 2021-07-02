@@ -23,7 +23,9 @@ const profileSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   favouriteProducts: [{ productId: String }],
-  profilePicture: String,
+  profilePicture: {
+    url: String,
+  },
 });
 
 const cartSchema = new mongoose.Schema({

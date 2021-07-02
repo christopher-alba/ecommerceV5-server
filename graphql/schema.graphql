@@ -27,7 +27,7 @@ type Profile {
   firstName: String
   lastName: String
   favouriteProducts: [favouriteProduct]
-  profilePicture: String
+  profilePicture: ProfileImageOutput
 }
 
 type Cart {
@@ -73,6 +73,9 @@ type ProductSizes {
 type ProductImagesOutput {
   url: String!
 }
+type ProfileImageOutput {
+  url: String
+}
 input createProductInput {
   name: String!
   price: Float!
@@ -103,7 +106,7 @@ input updateProfileInput {
   firstName: String
   lastName: String
   favouriteProducts: [favouriteProductInput]
-  profilePicture: String
+  profilePicture: ProfileImage
 }
 input favouriteProductInput {
   productId: ID!
@@ -122,7 +125,9 @@ input updateCartInput {
 input ProductImages {
   url: String!
 }
-
+input ProfileImage {
+  url: String!
+}
 input ProductSizesInput {
   stock: Int!
   size: ClothingSizes!
