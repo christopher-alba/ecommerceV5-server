@@ -27,7 +27,6 @@ const updateCart = async (args) => {
     { products: products }
   );
   const updatedCart = await Cart.findOne({ userId: args.userId });
-  console.log(updatedCart);
   return updatedCart;
 };
 

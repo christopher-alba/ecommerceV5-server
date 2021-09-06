@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema({
   orientation: String,
   views: Number,
   clothingType: String,
+  favourites: Number
 });
 
 const userSchema = new mongoose.Schema({

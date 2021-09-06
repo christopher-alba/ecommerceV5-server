@@ -54,7 +54,6 @@ exports.resolvers = {
       return createCart(username);
     },
     updateCart: (parent, args, context, info) => {
-      console.log(args);
       return updateCart(args);
     },
     createProfile: (parent, args, context, info) => {

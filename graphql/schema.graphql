@@ -58,6 +58,7 @@ type Product {
   orientation: Orientation
   clothingType: ClothingType
   sizes: [ProductSizes]
+  favourites: Int
 }
 type User {
   _id: ID!
@@ -96,6 +97,7 @@ input updateProductInput {
   orientation: Orientation
   clothingType: ClothingType
   views: Int
+  favourites: Int
 }
 
 input createProfileInput {

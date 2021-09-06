@@ -53,6 +53,7 @@ for (let i = 0; i < 100; i++) {
     ],
     orientation: makeOrientation(),
     views: Math.floor(Math.random() * 1000),
+    favourites: 0,
     clothingType: makeType(),
   });
 }
