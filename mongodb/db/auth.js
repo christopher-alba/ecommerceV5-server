@@ -8,6 +8,7 @@ const register = async (args) => {
   if (args.username === "" || args.password === "") {
     throw new AuthenticationError("Invalid Username or Password");
   }
+  // a random comment
   const newUser = {
     username: args.username,
     password: await encryptPassword(args.password),
